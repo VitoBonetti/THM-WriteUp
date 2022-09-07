@@ -1,0 +1,38 @@
+# Nmap 7.92 scan initiated Wed Sep  7 09:01:15 2022 as: nmap -sC -sV -O -v -oN scans/nmap_initial 10.10.251.164
+Nmap scan report for 10.10.251.164
+Host is up (0.032s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.6 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 8a:de:7b:a0:7c:be:93:a4:9f:7e:4c:2c:99:85:5f:f2 (RSA)
+|   256 b7:b2:a8:6c:ba:c7:74:6d:b8:ed:f8:ef:8b:c5:07:6f (ECDSA)
+|_  256 60:58:59:ec:d6:6d:1e:a7:56:6d:b5:62:d3:40:13:ce (ED25519)
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Jarassic Park
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+|_http-favicon: Unknown favicon MD5: 019A6B943FC3AAA6D09FBA3C139A909A
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.92%E=4%D=9/7%OT=22%CT=1%CU=37874%PV=Y%DS=2%DC=I%G=Y%TM=63184FE0
+OS:%P=x86_64-pc-linux-gnu)SEQ(SP=100%GCD=1%ISR=107%TI=Z%CI=I%II=I%TS=8)OPS(
+OS:O1=M506ST11NW7%O2=M506ST11NW7%O3=M506NNT11NW7%O4=M506ST11NW7%O5=M506ST11
+OS:NW7%O6=M506ST11)WIN(W1=68DF%W2=68DF%W3=68DF%W4=68DF%W5=68DF%W6=68DF)ECN(
+OS:R=Y%DF=Y%T=40%W=6903%O=M506NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS
+OS:%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=
+OS:Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=
+OS:R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T
+OS:=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=
+OS:S)
+
+Uptime guess: 0.013 days (since Wed Sep  7 08:42:33 2022)
+Network Distance: 2 hops
+TCP Sequence Prediction: Difficulty=256 (Good luck!)
+IP ID Sequence Generation: All zeros
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Sep  7 09:01:36 2022 -- 1 IP address (1 host up) scanned in 21.29 seconds
