@@ -5,7 +5,7 @@ Jurassic Park is a room from TryHackMe. [Here the link](https://tryhackme.com/ro
 The room's description says: 
 "_This medium-hard task will require you to enumerate the web application, get credentials to the server and find 5 flags hidden around the file system..._"
 
-The question we shoudl answer are the following:
+The questions to answer for complete the room are the following:
 
 1. What is the SQL database called which is serving the shop information? 
 2. How many columns does the table have? 
@@ -29,9 +29,9 @@ Let's begin!
 I opened my terminal, I'm actually using [Terminator](https://terminator-gtk3.readthedocs.io/en/latest/), split the screen and launched 2 scans:
 
 1. `nmap -sC -sV -O -v -oN scans/nmap_initial 10.10.251.164`
-    I used nmap for scan the most common port of our target. I used the OS Detection(-O) and Version Detection (-sV) flags in addition to the default scripts (-sC). Added a bit of verbosity (-v) and save the scan in a file called nmap_initial.
+    I used [nmap](https://nmap.org/) for scan the most common port of our target. I used the OS Detection(-O) and Version Detection (-sV) flags in addition to the default scripts (-sC). Added a bit of verbosity (-v) and save the scan in a file called nmap_initial.
 2. `rustscan -a 10.10.251.164 -r 1-65535 | tee scans/rustscan`
-    I used rustscan for check if other ports, besides the well-know ones, are also open.
+    I used [rustscan](https://rustscan.github.io/RustScan/) for check if other ports, besides the well-know ones, are also open.
     
     <sub>[Nmap scan report](https://github.com/VitoBonetti/THM-WriteUp/blob/main/Jurassic_Park/scans/nmap_initial) | 
     [Rustscan scan report](https://github.com/VitoBonetti/THM-WriteUp/blob/main/Jurassic_Park/scans/rustscan)</sub>
@@ -56,7 +56,7 @@ PORT   STATE SERVICE VERSION
 
 ## STEP 2
 
-In one of the terminal I runned gobuster, for discover eventualy hidden folder.
+In one of the terminal I runned [gobuster](https://github.com/OJ/gobuster), for discover eventualy hidden folder.
 
 `gobuster dir -u http://10.10.251.164 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt | tee scans/gobuster`
 
@@ -65,7 +65,7 @@ In one of the terminal I runned gobuster, for discover eventualy hidden folder.
 In the while, because the port 80 is open, i will check if there is a website running.
 And indeed the website is there.
 The source code does not reveal anything useful. There is only one link to _shop.php_.
-On the _shop.php_ page we could find 3 link for purchase different type of ticket for the Park, or I believe so. Anyway the thing that took my attention was the format of those three links.
+On the _shop.php_ page I could find 3 link for purchase different type of tickets for the Park, or I believe so. Anyway the thing that took my attention was the format of those three links.
 
 ```
 item=php?id=1
@@ -88,7 +88,7 @@ Not sure what to do about this information but I will keep note of it anyway.
 ## STEP 3 <sub>(questions 1,2 and 3)</sub>
 
 
-With the Burp request saved, I tryed to see if a database is really there using **sqlmap**
+With the Burp request saved, I tryed to see if a database is really there using [sqlmap](https://sqlmap.org/)
 
 `sqlmap -r files/burp_request.txt --dbs`
 
