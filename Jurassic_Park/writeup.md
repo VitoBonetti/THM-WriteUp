@@ -32,6 +32,9 @@ I opened my terminal, I'm actually using [Terminator](https://terminator-gtk3.re
     I used nmap for scan the most common port of our target. I used the OS Detection(-O) and Version Detection (-sV) flags in addition to the default scripts (-sC). Added a bit of verbosity (-v) and save the scan in a file called nmap_initial.
 2. `rustscan -a 10.10.251.164 -r 1-65535 | tee scans/rustscan`
     I used rustscan for check if other ports, besides the well-know ones, are also open.
+    
+    <sub>[Nmap scan report](https://github.com/VitoBonetti/THM-WriteUp/blob/main/Jurassic_Park/scans/nmap_initial) | 
+    [Rustscan scan report](https://github.com/VitoBonetti/THM-WriteUp/blob/main/Jurassic_Park/scans/rustscan)</sub>
 
 Apparently we have only 2 ports open: 22 and 80.
 
@@ -56,6 +59,8 @@ PORT   STATE SERVICE VERSION
 In one of the terminal I runned gobuster, for discover eventualy hidden folder.
 
 `gobuster dir -u http://10.10.251.164 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt | tee scans/gobuster`
+
+<sub>[Gobuster scan report](https://github.com/VitoBonetti/THM-WriteUp/blob/main/Jurassic_Park/scans/gobuster)</sub>
 
 In the while, because the port 80 is open, i will check if there is a website running.
 And indeed the website is there.
