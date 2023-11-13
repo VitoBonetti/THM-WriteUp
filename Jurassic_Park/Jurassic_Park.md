@@ -78,7 +78,7 @@ I thought "_Will there be a database?_". So i lauched BurpSuite, captured the re
 Back to Gobuster, apparently there is a _delete_ folder accessable. I did navigate to that address and got this
 
 ```
-New priv esc for Ubunut??
+New priv esc for Ubuntu??
 
 Change MySQL password on main system!
 ```
